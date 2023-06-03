@@ -1,0 +1,304 @@
+String my_data_1, my_data_2, my_data_3, my_data_4, my_data_5, my_data_6, my_data_7, my_data_8, my_data_9, my_data_10, my_data_11, my_data_12, my_data_13, my_data_14, my_data_15, my_data_16, my_data_17, my_data_18, my_data_19, my_data_20, my_data_21, my_data_22;
+char my_array_1[8], my_array_2[8], my_array_3[8], my_array_4[8], my_array_5[8], my_array_6[8], my_array_7[8], my_array_8[8], my_array_9[8], my_array_10[8], my_array_11[8], my_array_12[8], my_array_13[8], my_array_14[8], my_array_15[8], my_array_16[8], my_array_17[8], my_array_18[8], my_array_19[8], my_array_20[8], my_array_21[8], my_array_22[8];
+byte data1=255, data2=255, data3=255, data4=255, data5=255, data6=255, data7=255, data8=255, data9=255, data10=255, data11=255, data12=255, data13=255, data14=255, data15=255, data16=255, data17=255, data18=255, data19=255, data20=255, data21=255, data22=255;
+
+//These are the Data PINs
+int dataPin = 11;
+int RCLK_Pin = 9; //pin 12 on the 75HC595  -- LATCHPIN
+int SRCLK_Pin = 8; //pin 11 on the 75HC595  -- CLOCKPIN
+
+void setup() {
+  pinMode(dataPin, OUTPUT);
+  pinMode(RCLK_Pin, OUTPUT);
+  pinMode(SRCLK_Pin, OUTPUT);
+
+  Serial.begin(9600);
+  //delay(1000);
+  Serial.println("Connection Established Successfully.");
+
+}
+
+void loop() {
+   if(Serial.available()){
+        
+        delay(2000);
+        my_data_1 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #1 that you sent me " + my_data_1 + "!");
+        stringToArray(my_data_1, my_array_1);
+        delay(2000);
+        execute(&data1, my_array_1);
+        Serial.println(data1);
+
+        delay(2000);
+        my_data_2 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #2 that you sent me " + my_data_2 + "!");
+        stringToArray(my_data_2, my_array_2);
+        delay(2000);
+        execute(&data2, my_array_2);
+        Serial.println(data2);
+
+        delay(2000);
+        my_data_3 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #3 that you sent me " + my_data_3 + "!");
+        stringToArray(my_data_3, my_array_3);
+        delay(2000);
+        execute(&data3, my_array_3);
+        Serial.println(data3);      
+
+        delay(2000);
+        my_data_4 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #4 that you sent me " + my_data_4 + "!");
+        stringToArray(my_data_4, my_array_4);
+        delay(2000);
+        execute(&data4, my_array_4);
+        Serial.println(data4);
+
+        delay(2000);
+        my_data_5 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #5 that you sent me " + my_data_5 + "!");
+        stringToArray(my_data_5, my_array_5);
+        delay(2000);
+        execute(&data5, my_array_5);
+        Serial.println(data5);
+
+        delay(2000);
+        my_data_6 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #6 that you sent me " + my_data_6 + "!");
+        stringToArray(my_data_6, my_array_6);
+        delay(2000);
+        execute(&data6, my_array_6);
+        Serial.println(data6);
+
+        delay(2000);
+        my_data_7 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #7 that you sent me " + my_data_7 + "!");
+        stringToArray(my_data_7, my_array_7);
+        delay(2000);
+        execute(&data7, my_array_7);
+        Serial.println(data7);
+
+
+        delay(2000);
+        my_data_8 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #8 that you sent me " + my_data_8 + "!");
+        stringToArray(my_data_8, my_array_8);
+        delay(2000);
+        execute(&data8, my_array_8);
+        Serial.println(data8);
+
+
+        delay(2000);
+        my_data_9 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #9 that you sent me " + my_data_9 + "!");
+        stringToArray(my_data_9, my_array_9);
+        delay(2000);
+        execute(&data9, my_array_9);
+        Serial.println(data9);
+
+
+        delay(2000);
+        my_data_10 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #10 that you sent me " + my_data_10 + "!");
+        stringToArray(my_data_10, my_array_10);
+        delay(2000);
+        execute(&data10, my_array_10);
+        Serial.println(data10);
+
+
+        delay(2000);
+        my_data_11 = Serial.readStringUntil('\n');
+        Serial.println("Here is string #11 that you sent me " + my_data_11+ "!");
+        stringToArray(my_data_11, my_array_11);
+        delay(2000);
+        execute(&data11, my_array_11);
+        Serial.println(data11);
+
+
+        delay(2000);
+        my_data_12= Serial.readStringUntil('\n');
+        Serial.println("Here is string #12 that you sent me " + my_data_12+ "!");
+        stringToArray(my_data_12, my_array_12);
+        delay(2000);
+        execute(&data12, my_array_12);
+        Serial.println(data12);
+
+
+        delay(2000);
+        my_data_13= Serial.readStringUntil('\n');
+        Serial.println("Here is string #13 that you sent me " + my_data_13+ "!");
+        stringToArray(my_data_13, my_array_13);
+        delay(2000);
+        execute(&data13, my_array_13);
+        Serial.println(data13);
+
+
+        delay(2000);
+        my_data_14= Serial.readStringUntil('\n');
+        Serial.println("Here is string #14 that you sent me " + my_data_14+ "!");
+        stringToArray(my_data_14, my_array_14);
+        delay(2000);
+        execute(&data14, my_array_14);
+        Serial.println(data14);
+
+
+        delay(2000);
+        my_data_15= Serial.readStringUntil('\n');
+        Serial.println("Here is string #15 that you sent me " + my_data_15+ "!");
+        stringToArray(my_data_15, my_array_15);
+        delay(2000);
+        execute(&data15, my_array_15);
+        Serial.println(data15);
+
+
+        delay(2000);
+        my_data_16= Serial.readStringUntil('\n');
+        Serial.println("Here is string #16 that you sent me " + my_data_16+ "!");
+        stringToArray(my_data_16, my_array_16);
+        delay(2000);
+        execute(&data16, my_array_16);
+        Serial.println(data16);
+
+
+        delay(2000);
+        my_data_17= Serial.readStringUntil('\n');
+        Serial.println("Here is string #17 that you sent me " + my_data_17+ "!");
+        stringToArray(my_data_17, my_array_17);
+        delay(2000);
+        execute(&data17, my_array_17);
+        Serial.println(data17);
+
+
+        delay(2000);
+        my_data_18= Serial.readStringUntil('\n');
+        Serial.println("Here is string #18 that you sent me " + my_data_18+ "!");
+        stringToArray(my_data_18, my_array_18);
+        delay(2000);
+        execute(&data18, my_array_18);
+        Serial.println(data18);
+
+
+        delay(2000);
+        my_data_19= Serial.readStringUntil('\n');
+        Serial.println("Here is string #19 that you sent me " + my_data_19+ "!");
+        stringToArray(my_data_19, my_array_19);
+        delay(2000);
+        execute(&data19, my_array_19);
+        Serial.println(data19);
+
+
+        delay(2000);
+        my_data_20= Serial.readStringUntil('\n');
+        Serial.println("Here is string #20 that you sent me " + my_data_20+ "!");
+        stringToArray(my_data_20, my_array_20);
+        delay(2000);
+        execute(&data20, my_array_20);
+        Serial.println(data20);
+
+        delay(2000);
+        my_data_21= Serial.readStringUntil('\n');
+        Serial.println("Here is string #21 that you sent me " + my_data_21+ "!");
+        stringToArray(my_data_21, my_array_21);
+        delay(2000);
+        execute(&data21, my_array_21);
+        Serial.println(data21);
+
+        delay(2000);
+        my_data_22= Serial.readStringUntil('\n');
+        Serial.println("Here is string #22 that you sent me " + my_data_22+ "!");
+        stringToArray(my_data_22, my_array_21);
+        delay(2000);
+        execute(&data22, my_array_22);
+        Serial.println(data22);
+               
+        Serial.println("Execution Done!");
+
+}
+Test_LEDs();
+}
+
+void execute(byte *my_byte, char dataArray[8])
+{
+// shift out the data to the first shift register
+for (int i = 0; i < 8; i++) {        
+  *my_byte |= ((dataArray[i] - '0') << (7-i));  
+}
+}
+
+
+void stringToArray(String A, char *dataArray) {
+// Copy the contents of the input string into the array
+for (int i = 0; i < 8; i++) {
+  dataArray[i] = A.charAt(i);
+}
+}
+
+void shiftOut(int myDataPin, int myClockPin, byte myDataOut) {
+// This shifts 8 bits out MSB first,
+//on the rising edge of the clock,
+//clock idles low
+//internal function setup
+int i=0;
+int pinState;
+pinMode(myClockPin, OUTPUT);
+pinMode(myDataPin, OUTPUT);
+ //clear everything out just in case to
+ //prepare shift register for bit shifting
+digitalWrite(myDataPin, 0);
+digitalWrite(myClockPin, 0);
+
+//for each bit in the byte myDataOut&#xFFFD;
+//NOTICE THAT WE ARE COUNTING UP in our for loop
+//This means that %10000000 or "1" will go through such
+//that it will be pin Q0 that lights.
+for (i=0; i<=7; i++)  {
+digitalWrite(myClockPin, 0);
+//if the value passed to myDataOut and a bitmask result
+// true then... so if we are at i=6 and our value is
+// %11010100 it would the code compares it to %01000000
+// and proceeds to set pinState to 1.
+if ( myDataOut & (1<<i) ) {
+pinState= 1;
+}
+else {
+pinState= 0;
+}
+//Sets the pin to HIGH or LOW depending on pinState
+digitalWrite(myDataPin, pinState);
+//register shifts bits on upstroke of clock pin
+digitalWrite(myClockPin, 1);
+//zero the data pin after shift to prevent bleed through
+digitalWrite(myDataPin, 0);
+}
+//stop shifting
+digitalWrite(myClockPin, 0);
+}
+
+void Test_LEDs() {
+  // shift out the data to the shift registers
+  digitalWrite(RCLK_Pin, LOW);
+  
+  shiftOut(dataPin, SRCLK_Pin, data22);
+  shiftOut(dataPin, SRCLK_Pin, data21);
+  shiftOut(dataPin, SRCLK_Pin, data20);
+  shiftOut(dataPin, SRCLK_Pin, data19);
+  shiftOut(dataPin, SRCLK_Pin, data18);
+  shiftOut(dataPin, SRCLK_Pin, data17);
+  shiftOut(dataPin, SRCLK_Pin, data16);
+  shiftOut(dataPin, SRCLK_Pin, data15);
+  shiftOut(dataPin, SRCLK_Pin, data14);
+  shiftOut(dataPin, SRCLK_Pin, data13);
+  shiftOut(dataPin, SRCLK_Pin, data12);
+  shiftOut(dataPin, SRCLK_Pin, data11);
+  shiftOut(dataPin, SRCLK_Pin, data10);
+  shiftOut(dataPin, SRCLK_Pin, data9);
+  shiftOut(dataPin, SRCLK_Pin, data8);
+  shiftOut(dataPin, SRCLK_Pin, data7);
+  shiftOut(dataPin, SRCLK_Pin, data6);
+  shiftOut(dataPin, SRCLK_Pin, data5);
+  shiftOut(dataPin, SRCLK_Pin, data4);
+  shiftOut(dataPin, SRCLK_Pin, data3);
+  shiftOut(dataPin, SRCLK_Pin, data2);
+  shiftOut(dataPin, SRCLK_Pin, data1);
+  
+  digitalWrite(RCLK_Pin, HIGH);
+}
